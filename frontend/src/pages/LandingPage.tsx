@@ -1,14 +1,21 @@
 import { Button, Typography, useTheme } from '@mui/material';
-import shadows from '@mui/material/styles/shadows';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { SignIn } from '../redux/slices/authentication';
 import { RootState } from '../redux/store';
+import { useTranslation } from 'react-i18next';
+import { getTranslationLanguage, setTranslation } from '../services/translationService';
 
 export default function LandingPage() {
   const theme = useTheme();
 
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state: RootState) => state.authentication.loading);
+
+  const { t } = useTranslation();
+
+  const toggleLanguage = () => {
+    setTranslation(getTranslationLanguage() == 'de' ? 'en' : 'de');
+  };
 
   return (
     <>
@@ -17,7 +24,15 @@ export default function LandingPage() {
         onClick={() => {
           dispatch(SignIn({ email: '', password: '' }));
         }}>
-        Hallo Welt! {loading == 'loading' ? 'Loading' : 'Not loading'}
+        <>
+          {t('button.save')} {loading == 'loading' ? 'Loading' : 'Not loading'}
+        </>
+      </Button>
+      <Button
+        onClick={() => {
+          toggleLanguage();
+        }}>
+        Toggle Language
       </Button>
     </>
   );
