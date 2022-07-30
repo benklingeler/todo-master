@@ -1,0 +1,9 @@
+{
+  "button": {
+    "submit": "Submit",
+    "ok": "Ok",
+    "send": "Send",
+    "abort": "Abort",
+    "save": "Save"
+  }
+}

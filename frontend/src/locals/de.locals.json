@@ -1,0 +1,9 @@
+{
+  "button": {
+    "submit": "Absenden",
+    "ok": "Ok",
+    "send": "Senden",
+    "abort": "Abbrechen",
+    "save": "Speichern"
+  }
+}
